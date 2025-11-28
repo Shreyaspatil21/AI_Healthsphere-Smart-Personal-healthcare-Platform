@@ -1,0 +1,72 @@
+[
+  {
+    "id": "1762285702199",
+    "sessionId": "session_1762285701946",
+    "notes": "Unable to reach AI service. Based on what you said, I suggest: Unknown - needs clinical review. Recommended medicine: Paracetamol.",
+    "conversation": {
+      "transcript": "hello I am your"
+    },
+    "report": {
+      "replyText": "Unable to reach AI service. Based on what you said, I suggest: Unknown - needs clinical review. Recommended medicine: Paracetamol.",
+      "diagnosis": "Unknown - needs clinical review",
+      "symptoms": [
+        "hello I am your"
+      ],
+      "severity": "unknown",
+      "recommendedActions": [
+        "Take rest",
+        "Use the recommended medicine as directed",
+        "Seek in-person care if symptoms worsen"
+      ],
+      "escalate": false,
+      "recommendedSpecialist": "General Physician",
+      "prescription": {
+        "recommended_medications": [
+          {
+            "name": "Paracetamol",
+            "dose": "500 mg",
+            "duration": "3 days",
+            "notes": "If symptomatic"
+          }
+        ],
+        "notes_for_clinician": "Fallback generated because LLM was unreachable (network/DNS). Verify clinical details."
+      }
+    },
+    "timestamp": "2025-11-04T19:48:21.946Z"
+  },
+  {
+    "id": "1762285268273",
+    "sessionId": "session_1762285267997",
+    "notes": "Unable to reach AI service. Based on what you said, I suggest: Unknown - needs clinical review. Recommended medicine: Paracetamol.",
+    "conversation": {
+      "transcript": "hello"
+    },
+    "report": {
+      "replyText": "Unable to reach AI service. Based on what you said, I suggest: Unknown - needs clinical review. Recommended medicine: Paracetamol.",
+      "diagnosis": "Unknown - needs clinical review",
+      "symptoms": [
+        "hello"
+      ],
+      "severity": "unknown",
+      "recommendedActions": [
+        "Take rest",
+        "Use the recommended medicine as directed",
+        "Seek in-person care if symptoms worsen"
+      ],
+      "escalate": false,
+      "recommendedSpecialist": "General Physician",
+      "prescription": {
+        "recommended_medications": [
+          {
+            "name": "Paracetamol",
+            "dose": "500 mg",
+            "duration": "3 days",
+            "notes": "If symptomatic"
+          }
+        ],
+        "notes_for_clinician": "Fallback generated because LLM was unreachable (network/DNS). Verify clinical details."
+      }
+    },
+    "timestamp": "2025-11-04T19:41:07.997Z"
+  }
+]
