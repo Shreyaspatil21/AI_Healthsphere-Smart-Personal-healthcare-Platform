@@ -11,6 +11,10 @@ import Problem from "@/components/sections/problem";
 import Solution from "@/components/sections/solution";
 import Testimonials from "@/components/sections/testimonials";
 import TestimonialsCarousel from "@/components/sections/testimonials-carousel";
+<<<<<<< HEAD
+=======
+import Chatbot from "@/components/Chatbot";
+>>>>>>> 0a74951a08b525410bbc5b77e68a3dc7761227fa
 
 export default function Home() {
   return (
@@ -28,6 +32,10 @@ export default function Home() {
       <FAQ />
       <CTA />
       <Footer />
+<<<<<<< HEAD
+=======
+      <Chatbot />
+>>>>>>> 0a74951a08b525410bbc5b77e68a3dc7761227fa
     </main>
   );
 }

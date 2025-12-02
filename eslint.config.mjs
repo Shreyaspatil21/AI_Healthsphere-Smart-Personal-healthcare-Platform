@@ -23,6 +23,10 @@ const eslintConfig = [
       "@typescript-eslint/no-wrapper-object-types": "off",
       "@typescript-eslint/no-unsafe-function-type": "off",
       "@typescript-eslint/no-this-alias": "off",
+<<<<<<< HEAD
+=======
+      "@typescript-eslint/no-array-constructor": "off",
+>>>>>>> 0a74951a08b525410bbc5b77e68a3dc7761227fa
       "react-hooks/exhaustive-deps": "off",
       "@next/next/no-img-element": "off",
       "react/no-unescaped-entities": "off",

@@ -6,6 +6,10 @@ import {
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Provider from './provider';
+<<<<<<< HEAD
+=======
+import Chatbot from '@/components/Chatbot';
+>>>>>>> 0a74951a08b525410bbc5b77e68a3dc7761227fa
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,7 +22,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+<<<<<<< HEAD
   title: "AI Docter Agent ",
+=======
+  title: "AI Docter Agent",
+>>>>>>> 0a74951a08b525410bbc5b77e68a3dc7761227fa
   description: "AI Docter voice agent which can help you to get the best treatment for your health",
 };
 
@@ -30,9 +38,16 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
+<<<<<<< HEAD
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden`} suppressHydrationWarning>
           <Provider>
             {children}
+=======
+        <body className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden`}>
+          <Provider>
+            {children}
+            <Chatbot />
+>>>>>>> 0a74951a08b525410bbc5b77e68a3dc7761227fa
           </Provider>
         </body>
       </html>

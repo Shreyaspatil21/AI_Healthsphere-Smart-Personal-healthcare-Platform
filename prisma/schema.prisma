@@ -28,12 +28,15 @@ model Session {
   selectedDocter Json?
   conversation  Json?
   report        Json?
+<<<<<<< HEAD
   /**
    * Optional PDF bytes stored for the generated medical report.
    * Stored as Bytes in the database so we can serve the PDF directly.
    */
   reportPdf     Bytes?
   reportPdfName String?
+=======
+>>>>>>> 0a74951a08b525410bbc5b77e68a3dc7761227fa
   createdBy   String
   createdOn   String
 }

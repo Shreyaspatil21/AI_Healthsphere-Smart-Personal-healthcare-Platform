@@ -20,8 +20,20 @@ export const generateFallbackResponse = (userMessage: string): string => {
     "I'm sorry, I'm having trouble connecting to my knowledge base right now. Could you please repeat your question?",
     "I apologize, but I'm experiencing some technical difficulties. Could we try again in a moment?",
     "I seem to be having trouble processing your request. Could you rephrase your question?",
+<<<<<<< HEAD
     "I apologize for the inconvenience, but I'm currently unable to access my medical knowledge database. Please try agaishortly."
   ];
 
   return fallbackResponses[Math.floor(Math.random() * fallbackResponses.length)];
+=======
+    "I apologize for the inconvenience, but I'm currently unable to access my medical knowledge database. Please try again shortly."
+  ]
+
+  // Deterministic on server to avoid hydration mismatch; random on client.
+  const idx = typeof window === "undefined"
+    ? 0
+    : Math.floor(Math.random() * fallbackResponses.length)
+
+  return fallbackResponses[idx]
+>>>>>>> 0a74951a08b525410bbc5b77e68a3dc7761227fa
 }

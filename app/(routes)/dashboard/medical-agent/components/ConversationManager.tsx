@@ -11,7 +11,10 @@ export type Message = {
 interface ConversationManagerProps {
   isCallActive: boolean;
   doctorPrompt: string;
+<<<<<<< HEAD
   sessionId: string;
+=======
+>>>>>>> 0a74951a08b525410bbc5b77e68a3dc7761227fa
   onNewMessage: (message: Message) => void;
   onError: (error: string) => void;
 }
@@ -21,7 +24,11 @@ export interface ConversationManagerRef {
 }
 
 const ConversationManager = forwardRef<ConversationManagerRef, ConversationManagerProps>(
+<<<<<<< HEAD
   ({ isCallActive, doctorPrompt, sessionId, onNewMessage, onError }, ref) => {
+=======
+  ({ isCallActive, doctorPrompt, onNewMessage, onError }, ref) => {
+>>>>>>> 0a74951a08b525410bbc5b77e68a3dc7761227fa
     const [messages, setMessages] = useState<Message[]>([]);
     const lastTranscriptRef = useRef<string>("");
     const silenceTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -67,6 +74,7 @@ const ConversationManager = forwardRef<ConversationManagerRef, ConversationManag
       }
     };
 
+<<<<<<< HEAD
     const saveConversationToDatabase = async (conversationMessages: Message[]) => {
       try {
         console.log(`[DEBUG] Saving conversation to database for session: ${sessionId}`);
@@ -86,22 +94,30 @@ const ConversationManager = forwardRef<ConversationManagerRef, ConversationManag
       }
     };
 
+=======
+>>>>>>> 0a74951a08b525410bbc5b77e68a3dc7761227fa
     const processTranscript = async (transcript: string) => {
       if (transcript.trim() === lastTranscriptRef.current.trim() || processingTranscriptRef.current) return;
 
       processingTranscriptRef.current = true;
       lastTranscriptRef.current = transcript;
 
+<<<<<<< HEAD
       console.log(`[DEBUG] Processing transcript: "${transcript}"`);
 
+=======
+>>>>>>> 0a74951a08b525410bbc5b77e68a3dc7761227fa
       const userMessage: Message = {
         role: 'user',
         content: transcript,
         timestamp: Date.now()
       };
 
+<<<<<<< HEAD
       console.log(`[DEBUG] Created user message:`, userMessage);
 
+=======
+>>>>>>> 0a74951a08b525410bbc5b77e68a3dc7761227fa
       setMessages(prev => [...prev, userMessage]);
       onNewMessage(userMessage);
 
@@ -129,6 +145,7 @@ const ConversationManager = forwardRef<ConversationManagerRef, ConversationManag
             timestamp: Date.now()
           };
 
+<<<<<<< HEAD
           console.log(`[DEBUG] Created assistant message:`, assistantMessage);
 
           setMessages(prev => [...prev, assistantMessage]);
@@ -138,6 +155,11 @@ const ConversationManager = forwardRef<ConversationManagerRef, ConversationManag
           const fullConversation = [...messages, userMessage, assistantMessage];
           console.log(`[DEBUG] Full conversation before saving:`, fullConversation.length, 'messages');
           await saveConversationToDatabase(fullConversation);
+=======
+
+          setMessages(prev => [...prev, assistantMessage]);
+          onNewMessage(assistantMessage);
+>>>>>>> 0a74951a08b525410bbc5b77e68a3dc7761227fa
         }
       } catch (error) {
         console.error("Error sending to AI agent:", error);
@@ -150,6 +172,7 @@ const ConversationManager = forwardRef<ConversationManagerRef, ConversationManag
           timestamp: Date.now()
         };
 
+<<<<<<< HEAD
         console.log(`[DEBUG] Created fallback message:`, fallbackMessage);
 
         setMessages(prev => [...prev, fallbackMessage]);
@@ -159,6 +182,10 @@ const ConversationManager = forwardRef<ConversationManagerRef, ConversationManag
         const fullConversationWithFallback = [...messages, userMessage, fallbackMessage];
         console.log(`[DEBUG] Full conversation with fallback before saving:`, fullConversationWithFallback.length, 'messages');
         await saveConversationToDatabase(fullConversationWithFallback);
+=======
+        setMessages(prev => [...prev, fallbackMessage]);
+        onNewMessage(fallbackMessage);
+>>>>>>> 0a74951a08b525410bbc5b77e68a3dc7761227fa
       } finally {
         processingTranscriptRef.current = false;
       }

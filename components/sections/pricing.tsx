@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 "use client";
 
 import Section from "@/components/section";
@@ -198,4 +199,11 @@ export default function PricingSection() {
       </div>
     </Section>
   );
+=======
+import React from "react"
+
+export default function Pricing(): React.JSX.Element | null {
+  // Pricing UI removed — keep placeholder so imports don't break
+  return null
+>>>>>>> 0a74951a08b525410bbc5b77e68a3dc7761227fa
 }

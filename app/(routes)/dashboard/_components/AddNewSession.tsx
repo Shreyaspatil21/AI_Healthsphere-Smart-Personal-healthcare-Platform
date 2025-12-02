@@ -59,6 +59,7 @@ function AddNewSession({ isOpen, onOpenChange, preSelectedDoctor }: AddNewSessio
 
   const handleStartConsultation = async () => {
     setIsLoading(true)
+<<<<<<< HEAD
     try {
       const result = await axios.post("/api/session-chat", {
         notes: note,
@@ -81,6 +82,18 @@ function AddNewSession({ isOpen, onOpenChange, preSelectedDoctor }: AddNewSessio
     } finally {
       setIsLoading(false)
     }
+=======
+    const result = await axios.post("/api/session-chat", {
+      notes: note,
+      selectedDoctor: selectedDoctor
+    })
+    console.log(result.data)
+    if (result.data.sessionId) {
+      console.log("sessionId", result.data.sessionId)
+      router.push(`/dashboard/medical-agent/${result.data.sessionId}`)
+    }
+    setIsLoading(false)
+>>>>>>> 0a74951a08b525410bbc5b77e68a3dc7761227fa
   }
 
   return (

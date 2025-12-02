@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+<<<<<<< HEAD
 import { PrismaClient } from "@/lib/generated/prisma";
 import { currentUser } from "@clerk/nextjs/server";
 
@@ -20,6 +21,15 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 export async function POST() {
+=======
+import { prisma, prismaAvailable } from '@/lib/prismaClient'
+import { currentUser } from "@clerk/nextjs/server";
+
+export async function POST() {
+  if (!prismaAvailable || !prisma) {
+    return NextResponse.json({ error: 'Database not configured' }, { status: 503 })
+  }
+>>>>>>> 0a74951a08b525410bbc5b77e68a3dc7761227fa
   try {
     const user = await currentUser();
 
