@@ -2004,6 +2004,8 @@ export namespace Prisma {
     id: number | null
     sessionId: string | null
     notes: string | null
+    reportPdf: Uint8Array | null
+    reportPdfName: string | null
     createdBy: string | null
     createdOn: string | null
   }
@@ -2012,6 +2014,8 @@ export namespace Prisma {
     id: number | null
     sessionId: string | null
     notes: string | null
+    reportPdf: Uint8Array | null
+    reportPdfName: string | null
     createdBy: string | null
     createdOn: string | null
   }
@@ -2023,6 +2027,8 @@ export namespace Prisma {
     selectedDocter: number
     conversation: number
     report: number
+    reportPdf: number
+    reportPdfName: number
     createdBy: number
     createdOn: number
     _all: number
@@ -2041,6 +2047,8 @@ export namespace Prisma {
     id?: true
     sessionId?: true
     notes?: true
+    reportPdf?: true
+    reportPdfName?: true
     createdBy?: true
     createdOn?: true
   }
@@ -2049,6 +2057,8 @@ export namespace Prisma {
     id?: true
     sessionId?: true
     notes?: true
+    reportPdf?: true
+    reportPdfName?: true
     createdBy?: true
     createdOn?: true
   }
@@ -2060,6 +2070,8 @@ export namespace Prisma {
     selectedDocter?: true
     conversation?: true
     report?: true
+    reportPdf?: true
+    reportPdfName?: true
     createdBy?: true
     createdOn?: true
     _all?: true
@@ -2158,6 +2170,8 @@ export namespace Prisma {
     selectedDocter: JsonValue | null
     conversation: JsonValue | null
     report: JsonValue | null
+    reportPdf: Uint8Array | null
+    reportPdfName: string | null
     createdBy: string
     createdOn: string
     _count: SessionCountAggregateOutputType | null
@@ -2188,6 +2202,8 @@ export namespace Prisma {
     selectedDocter?: boolean
     conversation?: boolean
     report?: boolean
+    reportPdf?: boolean
+    reportPdfName?: boolean
     createdBy?: boolean
     createdOn?: boolean
   }, ExtArgs["result"]["session"]>
@@ -2199,6 +2215,8 @@ export namespace Prisma {
     selectedDocter?: boolean
     conversation?: boolean
     report?: boolean
+    reportPdf?: boolean
+    reportPdfName?: boolean
     createdBy?: boolean
     createdOn?: boolean
   }, ExtArgs["result"]["session"]>
@@ -2210,6 +2228,8 @@ export namespace Prisma {
     selectedDocter?: boolean
     conversation?: boolean
     report?: boolean
+    reportPdf?: boolean
+    reportPdfName?: boolean
     createdBy?: boolean
     createdOn?: boolean
   }, ExtArgs["result"]["session"]>
@@ -2221,11 +2241,13 @@ export namespace Prisma {
     selectedDocter?: boolean
     conversation?: boolean
     report?: boolean
+    reportPdf?: boolean
+    reportPdfName?: boolean
     createdBy?: boolean
     createdOn?: boolean
   }
 
-  export type SessionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "sessionId" | "notes" | "selectedDocter" | "conversation" | "report" | "createdBy" | "createdOn", ExtArgs["result"]["session"]>
+  export type SessionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "sessionId" | "notes" | "selectedDocter" | "conversation" | "report" | "reportPdf" | "reportPdfName" | "createdBy" | "createdOn", ExtArgs["result"]["session"]>
 
   export type $SessionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Session"
@@ -2237,6 +2259,13 @@ export namespace Prisma {
       selectedDocter: Prisma.JsonValue | null
       conversation: Prisma.JsonValue | null
       report: Prisma.JsonValue | null
+      /**
+       * *
+       *    * Optional PDF bytes stored for the generated medical report.
+       *    * Stored as Bytes in the database so we can serve the PDF directly.
+       */
+      reportPdf: Uint8Array | null
+      reportPdfName: string | null
       createdBy: string
       createdOn: string
     }, ExtArgs["result"]["session"]>
@@ -2668,6 +2697,8 @@ export namespace Prisma {
     readonly selectedDocter: FieldRef<"Session", 'Json'>
     readonly conversation: FieldRef<"Session", 'Json'>
     readonly report: FieldRef<"Session", 'Json'>
+    readonly reportPdf: FieldRef<"Session", 'Bytes'>
+    readonly reportPdfName: FieldRef<"Session", 'String'>
     readonly createdBy: FieldRef<"Session", 'String'>
     readonly createdOn: FieldRef<"Session", 'String'>
   }
@@ -3067,6 +3098,8 @@ export namespace Prisma {
     selectedDocter: 'selectedDocter',
     conversation: 'conversation',
     report: 'report',
+    reportPdf: 'reportPdf',
+    reportPdfName: 'reportPdfName',
     createdBy: 'createdBy',
     createdOn: 'createdOn'
   };
@@ -3163,6 +3196,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Bytes'
+   */
+  export type BytesFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Bytes'>
+    
+
+
+  /**
+   * Reference to a field of type 'Bytes[]'
+   */
+  export type ListBytesFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Bytes[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -3238,6 +3285,8 @@ export namespace Prisma {
     selectedDocter?: JsonNullableFilter<"Session">
     conversation?: JsonNullableFilter<"Session">
     report?: JsonNullableFilter<"Session">
+    reportPdf?: BytesNullableFilter<"Session"> | Uint8Array | null
+    reportPdfName?: StringNullableFilter<"Session"> | string | null
     createdBy?: StringFilter<"Session"> | string
     createdOn?: StringFilter<"Session"> | string
   }
@@ -3249,6 +3298,8 @@ export namespace Prisma {
     selectedDocter?: SortOrderInput | SortOrder
     conversation?: SortOrderInput | SortOrder
     report?: SortOrderInput | SortOrder
+    reportPdf?: SortOrderInput | SortOrder
+    reportPdfName?: SortOrderInput | SortOrder
     createdBy?: SortOrder
     createdOn?: SortOrder
   }
@@ -3263,6 +3314,8 @@ export namespace Prisma {
     selectedDocter?: JsonNullableFilter<"Session">
     conversation?: JsonNullableFilter<"Session">
     report?: JsonNullableFilter<"Session">
+    reportPdf?: BytesNullableFilter<"Session"> | Uint8Array | null
+    reportPdfName?: StringNullableFilter<"Session"> | string | null
     createdBy?: StringFilter<"Session"> | string
     createdOn?: StringFilter<"Session"> | string
   }, "id" | "sessionId">
@@ -3274,6 +3327,8 @@ export namespace Prisma {
     selectedDocter?: SortOrderInput | SortOrder
     conversation?: SortOrderInput | SortOrder
     report?: SortOrderInput | SortOrder
+    reportPdf?: SortOrderInput | SortOrder
+    reportPdfName?: SortOrderInput | SortOrder
     createdBy?: SortOrder
     createdOn?: SortOrder
     _count?: SessionCountOrderByAggregateInput
@@ -3293,6 +3348,8 @@ export namespace Prisma {
     selectedDocter?: JsonNullableWithAggregatesFilter<"Session">
     conversation?: JsonNullableWithAggregatesFilter<"Session">
     report?: JsonNullableWithAggregatesFilter<"Session">
+    reportPdf?: BytesNullableWithAggregatesFilter<"Session"> | Uint8Array | null
+    reportPdfName?: StringNullableWithAggregatesFilter<"Session"> | string | null
     createdBy?: StringWithAggregatesFilter<"Session"> | string
     createdOn?: StringWithAggregatesFilter<"Session"> | string
   }
@@ -3349,6 +3406,8 @@ export namespace Prisma {
     selectedDocter?: NullableJsonNullValueInput | InputJsonValue
     conversation?: NullableJsonNullValueInput | InputJsonValue
     report?: NullableJsonNullValueInput | InputJsonValue
+    reportPdf?: Uint8Array | null
+    reportPdfName?: string | null
     createdBy: string
     createdOn: string
   }
@@ -3360,6 +3419,8 @@ export namespace Prisma {
     selectedDocter?: NullableJsonNullValueInput | InputJsonValue
     conversation?: NullableJsonNullValueInput | InputJsonValue
     report?: NullableJsonNullValueInput | InputJsonValue
+    reportPdf?: Uint8Array | null
+    reportPdfName?: string | null
     createdBy: string
     createdOn: string
   }
@@ -3370,6 +3431,8 @@ export namespace Prisma {
     selectedDocter?: NullableJsonNullValueInput | InputJsonValue
     conversation?: NullableJsonNullValueInput | InputJsonValue
     report?: NullableJsonNullValueInput | InputJsonValue
+    reportPdf?: NullableBytesFieldUpdateOperationsInput | Uint8Array | null
+    reportPdfName?: NullableStringFieldUpdateOperationsInput | string | null
     createdBy?: StringFieldUpdateOperationsInput | string
     createdOn?: StringFieldUpdateOperationsInput | string
   }
@@ -3381,6 +3444,8 @@ export namespace Prisma {
     selectedDocter?: NullableJsonNullValueInput | InputJsonValue
     conversation?: NullableJsonNullValueInput | InputJsonValue
     report?: NullableJsonNullValueInput | InputJsonValue
+    reportPdf?: NullableBytesFieldUpdateOperationsInput | Uint8Array | null
+    reportPdfName?: NullableStringFieldUpdateOperationsInput | string | null
     createdBy?: StringFieldUpdateOperationsInput | string
     createdOn?: StringFieldUpdateOperationsInput | string
   }
@@ -3392,6 +3457,8 @@ export namespace Prisma {
     selectedDocter?: NullableJsonNullValueInput | InputJsonValue
     conversation?: NullableJsonNullValueInput | InputJsonValue
     report?: NullableJsonNullValueInput | InputJsonValue
+    reportPdf?: Uint8Array | null
+    reportPdfName?: string | null
     createdBy: string
     createdOn: string
   }
@@ -3402,6 +3469,8 @@ export namespace Prisma {
     selectedDocter?: NullableJsonNullValueInput | InputJsonValue
     conversation?: NullableJsonNullValueInput | InputJsonValue
     report?: NullableJsonNullValueInput | InputJsonValue
+    reportPdf?: NullableBytesFieldUpdateOperationsInput | Uint8Array | null
+    reportPdfName?: NullableStringFieldUpdateOperationsInput | string | null
     createdBy?: StringFieldUpdateOperationsInput | string
     createdOn?: StringFieldUpdateOperationsInput | string
   }
@@ -3413,6 +3482,8 @@ export namespace Prisma {
     selectedDocter?: NullableJsonNullValueInput | InputJsonValue
     conversation?: NullableJsonNullValueInput | InputJsonValue
     report?: NullableJsonNullValueInput | InputJsonValue
+    reportPdf?: NullableBytesFieldUpdateOperationsInput | Uint8Array | null
+    reportPdfName?: NullableStringFieldUpdateOperationsInput | string | null
     createdBy?: StringFieldUpdateOperationsInput | string
     createdOn?: StringFieldUpdateOperationsInput | string
   }
@@ -3531,6 +3602,28 @@ export namespace Prisma {
     not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
   }
 
+  export type BytesNullableFilter<$PrismaModel = never> = {
+    equals?: Uint8Array | BytesFieldRefInput<$PrismaModel> | null
+    in?: Uint8Array[] | ListBytesFieldRefInput<$PrismaModel> | null
+    notIn?: Uint8Array[] | ListBytesFieldRefInput<$PrismaModel> | null
+    not?: NestedBytesNullableFilter<$PrismaModel> | Uint8Array | null
+  }
+
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -3543,6 +3636,8 @@ export namespace Prisma {
     selectedDocter?: SortOrder
     conversation?: SortOrder
     report?: SortOrder
+    reportPdf?: SortOrder
+    reportPdfName?: SortOrder
     createdBy?: SortOrder
     createdOn?: SortOrder
   }
@@ -3555,6 +3650,8 @@ export namespace Prisma {
     id?: SortOrder
     sessionId?: SortOrder
     notes?: SortOrder
+    reportPdf?: SortOrder
+    reportPdfName?: SortOrder
     createdBy?: SortOrder
     createdOn?: SortOrder
   }
@@ -3563,6 +3660,8 @@ export namespace Prisma {
     id?: SortOrder
     sessionId?: SortOrder
     notes?: SortOrder
+    reportPdf?: SortOrder
+    reportPdfName?: SortOrder
     createdBy?: SortOrder
     createdOn?: SortOrder
   }
@@ -3597,6 +3696,34 @@ export namespace Prisma {
     _max?: NestedJsonNullableFilter<$PrismaModel>
   }
 
+  export type BytesNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Uint8Array | BytesFieldRefInput<$PrismaModel> | null
+    in?: Uint8Array[] | ListBytesFieldRefInput<$PrismaModel> | null
+    notIn?: Uint8Array[] | ListBytesFieldRefInput<$PrismaModel> | null
+    not?: NestedBytesNullableWithAggregatesFilter<$PrismaModel> | Uint8Array | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBytesNullableFilter<$PrismaModel>
+    _max?: NestedBytesNullableFilter<$PrismaModel>
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
@@ -3607,6 +3734,14 @@ export namespace Prisma {
     decrement?: number
     multiply?: number
     divide?: number
+  }
+
+  export type NullableBytesFieldUpdateOperationsInput = {
+    set?: Uint8Array | null
+  }
+
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -3678,6 +3813,27 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
+  export type NestedBytesNullableFilter<$PrismaModel = never> = {
+    equals?: Uint8Array | BytesFieldRefInput<$PrismaModel> | null
+    in?: Uint8Array[] | ListBytesFieldRefInput<$PrismaModel> | null
+    notIn?: Uint8Array[] | ListBytesFieldRefInput<$PrismaModel> | null
+    not?: NestedBytesNullableFilter<$PrismaModel> | Uint8Array | null
+  }
+
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type NestedIntNullableFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
@@ -3710,6 +3866,33 @@ export namespace Prisma {
     gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
     gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
     not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
+  export type NestedBytesNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Uint8Array | BytesFieldRefInput<$PrismaModel> | null
+    in?: Uint8Array[] | ListBytesFieldRefInput<$PrismaModel> | null
+    notIn?: Uint8Array[] | ListBytesFieldRefInput<$PrismaModel> | null
+    not?: NestedBytesNullableWithAggregatesFilter<$PrismaModel> | Uint8Array | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBytesNullableFilter<$PrismaModel>
+    _max?: NestedBytesNullableFilter<$PrismaModel>
+  }
+
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
 

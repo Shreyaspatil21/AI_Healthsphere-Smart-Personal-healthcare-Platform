@@ -12,6 +12,7 @@ import ConversationDisplay from '../components/ConversationDisplay'
 import ConversationManager, { Message, ConversationManagerRef } from '../components/ConversationManager'
 import VoiceRecordButton from '../components/VoiceRecordButton'
 import TranscriptionLoading from '../components/TranscriptionLoading'
+import MedicalReport from '../components/MedicalReport'
 import { convertAudioToText } from '../services/speechToText'
 
 type Session = {
@@ -136,33 +137,21 @@ function MedicalVoiceAgent() {
   }
 
 
-  const stopCall = () => {
-    console.log("Stopping call and resetting all components...")
+  const stopCall = async () => {
+    console.log("Stopping call...")
+
+    // Check if a meaningful conversation took place before attempting to generate a report
+    const hasConversation = messages.filter(m => m.role === 'user').length > 0;
 
     setIsCallActive(false)
 
-    if (textToSpeechRef.current) {
-      console.log("Stopping TTS speech...")
-      textToSpeechRef.current.stopSpeaking();
-    }
+    // Stop TTS
+    textToSpeechRef.current?.stopSpeaking()
 
-    if (audioElementRef.current) {
-      console.log("Stopping audio playback...")
-      audioElementRef.current.pause()
-      audioElementRef.current.src = ''
-    }
+    // Stop browser TTS fallback
+    window.speechSynthesis?.cancel()
 
-    if (window.speechSynthesis) {
-      console.log("Cancelling speech synthesis...")
-      window.speechSynthesis.cancel()
-    }
-
-    if (timerRef.current) {
-      console.log("Clearing timer...")
-      clearInterval(timerRef.current)
-      timerRef.current = null
-    }
-
+    // Reset UI
     setIsListening(false)
     setIsSpeaking(false)
     setIsTranscribing(false)
@@ -170,10 +159,29 @@ function MedicalVoiceAgent() {
     setAssistantCaption("")
     setCurrentAssistantText("")
     setCallDuration(0)
-
     setMessages([])
 
-    console.log("Call stopped and all components reset")
+    if (timerRef.current) clearInterval(timerRef.current)
+
+    // Generate report only if a conversation took place
+    if (sesstionId && hasConversation) {
+      try {
+        setIsLoading(true)
+        await axios.post('/api/generate-report', { sessionId: sesstionId })
+        await getSessionDetails() // Refresh session to get the new report
+      } catch (error: any) {
+        if (error.response?.status === 400) {
+          setError(error.response.data?.error || "Conversation was too short for a report.")
+        } else {
+          setError("Failed to generate report")
+        }
+      } finally {
+        setIsLoading(false)
+      }
+    } else if (sesstionId) {
+      // If no conversation, just refresh the session details
+      await getSessionDetails();
+    }
   }
 
   const handleTranscript = useCallback((transcript: string, isFinal: boolean) => {
@@ -348,6 +356,7 @@ function MedicalVoiceAgent() {
             ref={conversationManagerRef}
             isCallActive={isCallActive}
             doctorPrompt={doctorPrompt}
+            sessionId={sesstionId as string}
             onNewMessage={handleNewMessage}
             onError={handleError}
           />
@@ -361,6 +370,16 @@ function MedicalVoiceAgent() {
 
           <TranscriptionLoading isLoading={isTranscribing} />
         </>
+      )}
+
+      {/* Medical Report Section */}
+      {session?.report && (
+        <MedicalReport
+          report={session.report as any}
+          sessionId={session.sessionId}
+          hasServerPdf={!!(session as any).reportPdf}
+          onDownload={() => console.log("Report downloaded")}
+        />
       )}
     </div>
   )

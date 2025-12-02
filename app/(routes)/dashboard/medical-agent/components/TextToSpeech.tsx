@@ -94,7 +94,19 @@ const TextToSpeech = forwardRef<TextToSpeechRef, TextToSpeechProps>(({
   };
 
   const handleAudioError = (e: Event) => {
-    console.error("Audio playback error occurred", e);
+    const audioError = e as any;
+    console.error("Audio playback error occurred", {
+      error: audioError,
+      target: audioError.target,
+      errorCode: audioError.target?.error?.code,
+      errorMessage: audioError.target?.error?.message,
+      networkState: audioError.target?.networkState,
+      readyState: audioError.target?.readyState,
+      src: audioError.target?.src,
+      currentSrc: audioError.target?.currentSrc,
+      duration: audioError.target?.duration,
+      buffered: audioError.target?.buffered
+    });
     setIsProcessing(false);
     onSpeakingEnd();
   };

@@ -3,6 +3,7 @@ import {
   Drawer as DrawerComponent,
   DrawerContent,
   DrawerHeader,
+  DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import Link from "next/link";
@@ -40,6 +41,7 @@ export default function Drawer() {
         <IoMenuSharp className="text-2xl" />
       </DrawerTrigger>
       <DrawerContent>
+        <DrawerTitle className="sr-only">Navigation Menu</DrawerTitle>
         <DrawerHeader className="px-6">
           <div className="">
             {menuItems.map((item) => (

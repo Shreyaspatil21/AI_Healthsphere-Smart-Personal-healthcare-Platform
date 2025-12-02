@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AI Docter Agent | Sumama khan",
+  title: "AI Docter Agent ",
   description: "AI Docter voice agent which can help you to get the best treatment for your health",
 };
 
@@ -30,7 +30,7 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden`}>
+        <body className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden`} suppressHydrationWarning>
           <Provider>
             {children}
           </Provider>

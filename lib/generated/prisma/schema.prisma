@@ -22,12 +22,18 @@ model User {
 }
 
 model Session {
-  id             Int    @id @default(autoincrement())
-  sessionId      String @unique
+  id             Int     @id @default(autoincrement())
+  sessionId      String  @unique
   notes          String
   selectedDocter Json?
   conversation   Json?
   report         Json?
+  /**
+   * Optional PDF bytes stored for the generated medical report.
+   * Stored as Bytes in the database so we can serve the PDF directly.
+   */
+  reportPdf      Bytes?
+  reportPdfName  String?
   createdBy      String
   createdOn      String
 }

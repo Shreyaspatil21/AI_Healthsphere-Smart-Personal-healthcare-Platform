@@ -5,6 +5,7 @@ import {
   Drawer as DrawerComponent,
   DrawerContent,
   DrawerHeader,
+  DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import { cn } from "@/lib/utils";
@@ -20,6 +21,8 @@ export default function Drawer() {
         <IoMenuSharp className="text-2xl" />
       </DrawerTrigger>
       <DrawerContent>
+        {/* Accessible title required by the underlying dialog primitives. Hidden visually. */}
+        <DrawerTitle className="sr-only">Navigation Menu</DrawerTitle>
         <DrawerHeader className="px-6">
           <Link
             href={user ? "/dashboard" : "/signin"}

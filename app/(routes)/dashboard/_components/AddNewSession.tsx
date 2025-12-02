@@ -59,16 +59,28 @@ function AddNewSession({ isOpen, onOpenChange, preSelectedDoctor }: AddNewSessio
 
   const handleStartConsultation = async () => {
     setIsLoading(true)
-    const result = await axios.post("/api/session-chat", {
-      notes: note,
-      selectedDoctor: selectedDoctor
-    })
-    console.log(result.data)
-    if (result.data.sessionId) {
-      console.log("sessionId", result.data.sessionId)
-      router.push(`/dashboard/medical-agent/${result.data.sessionId}`)
+    try {
+      const result = await axios.post("/api/session-chat", {
+        notes: note,
+        selectedDoctor: selectedDoctor
+      })
+      console.log(result.data)
+      if (result.data.sessionId) {
+        console.log("sessionId", result.data.sessionId)
+        router.push(`/dashboard/medical-agent/${result.data.sessionId}`)
+      } else {
+        setError("Failed to create session. Please try again.")
+      }
+    } catch (error: any) {
+      console.error("Error starting consultation:", error)
+      if (error.response?.status === 500) {
+        setError("Server error occurred. Please try again later.")
+      } else {
+        setError("Failed to start consultation. Please try again.")
+      }
+    } finally {
+      setIsLoading(false)
     }
-    setIsLoading(false)
   }
 
   return (
