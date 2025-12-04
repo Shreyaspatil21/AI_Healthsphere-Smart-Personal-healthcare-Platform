@@ -12,6 +12,8 @@ import Solution from "@/components/sections/solution";
 import Testimonials from "@/components/sections/testimonials";
 import TestimonialsCarousel from "@/components/sections/testimonials-carousel";
 
+import Developer from "@/components/sections/developer";
+
 export default function Home() {
   return (
     <main>
@@ -26,6 +28,7 @@ export default function Home() {
       <Testimonials />
       <Pricing />
       <FAQ />
+      <Developer />
       <CTA />
       <Footer />
     </main>
