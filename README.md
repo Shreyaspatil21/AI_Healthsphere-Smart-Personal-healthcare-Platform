@@ -55,6 +55,11 @@ A Next.js application that provides an AI-powered medical assistant with real-ti
    npm run dev
    ```
 
+
+## Deployed Version
+Production URL:
+https://aidoctor-sable.vercel.app/en
+
 ## Voice Conversation Flow
 
 The application implements a natural turn-taking conversation flow:
