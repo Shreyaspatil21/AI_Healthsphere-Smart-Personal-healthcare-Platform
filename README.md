@@ -1,111 +1,180 @@
-# Doctor AI Agent
+# 🩺 Doctor AI Agent (AI Doctor)
 
-A Next.js application that provides an AI-powered medical assistant with real-time voice conversation capabilities.
+An **AI-powered medical assistant** built with **Next.js** that enables **real-time voice-based conversations** with an intelligent doctor agent.  
+The system supports **multi-language interaction**, **speech-to-text**, **text-to-speech**, secure **authentication**, and is fully **deployed on Vercel**.
 
-## Features
-
-- Real-time voice conversation with AI medical agents
-- Speech-to-Text using AssemblyAI WebSocket API
-- Text-to-Speech using Murf AI with browser TTS fallback
-- AI responses powered by OpenRouter/OpenAI
-- Captions for both user and AI assistant speech
-- Session management and history
-- Turn-taking conversation flow (listens for user input after AI speaks)
-- User authentication with Clerk
-
-  ## Video
-[Click here](https://imagekit.io/player/embed/rmyd10ywi/Recording%202025-06-29%20204016.mp4?updatedAt=1751212929355&thumbnail=https%3A%2F%2Fik.imagekit.io%2Frmyd10ywi%2FRecording%25202025-06-29%2520204016.mp4%2Fik-thumbnail.jpg%3FupdatedAt%3D1751212929355&updatedAt=1751212929355)
-
-## Setup
-
-1. Clone the repository
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-3. Create a `.env.local` file with the following variables:
-   ```
-   # API Keys
-   NEXT_PUBLIC_ASSEMBLYAI_API_KEY=your_assemblyai_api_key_here
-   MURF_API_KEY=your_murf_api_key_here
-   OPEN_ROUTER_API_KEY=your_openrouter_api_key_here
-
-   # Authentication (Clerk)
-   NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key_here
-   CLERK_SECRET_KEY=your_clerk_secret_key_here
-   NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
-   NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL=/dashboard
-   NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
-   NEXT_PUBLIC_CLERK_SIGN_UP_FALLBACK_REDIRECT_URL=/dashboard
-
-   # Database
-   DATABASE_URL="postgresql://postgres:password@localhost:5432/doctor_ai?schema=public"
-
-   # Other Configuration
-   NEXT_PUBLIC_APP_URL=http://localhost:3000
-   ```
-
-4. Set up the database:
-   ```bash
-   npx prisma migrate dev
-   ```
-
-5. Run the development server:
-   ```bash
-   npm run dev
-   ```
-
-
-## Deployed Version
-Production URL:
+🌐 **Live Demo:**  
 https://aidoctor-sable.vercel.app/en
 
-## Voice Conversation Flow
+---
 
-The application implements a natural turn-taking conversation flow:
+## 🚀 Overview
 
-1. **Start Call**: When you click "Start Call", the AI introduces itself
-2. **AI Speaking**: While the AI is speaking, a visual indicator appears and your microphone is muted
-3. **User Speaking**: After the AI finishes, your microphone is automatically activated (indicated by a green mic icon)
-4. **Silence Detection**: If you pause for 2 seconds, the system assumes you've finished speaking
-5. **Processing**: Your speech is converted to text, sent to the AI, and the AI responds
-6. **Repeat**: This back-and-forth conversation continues until you end the call
+Doctor AI Agent simulates a virtual doctor that can:
+- Listen to users via microphone
+- Understand speech in multiple languages
+- Respond intelligently using AI
+- Speak back naturally using TTS
+- Maintain a natural, real-time conversation flow
 
-## Troubleshooting
+This project demonstrates a **full-stack AI voice agent** suitable for **healthcare demos**, **AI assistants**, and **voice-based applications**.
 
-If you encounter issues with the voice conversation functionality:
+---
 
-1. **Microphone Access**: Make sure your browser has permission to access your microphone.
+## ✨ Features
 
-2. **AssemblyAI API**: 
-   - Verify your AssemblyAI API key is correctly set in the `.env.local` file
-   - The key should be prefixed with `NEXT_PUBLIC_` since it's used on the client side
-   - Check your AssemblyAI account has sufficient credits
+### 🗣️ Voice Conversation
+- Real-time voice conversation with AI doctor
+- Natural turn-based conversation flow
+- Automatic silence detection
+- Live captions for both user and AI
 
-3. **Murf AI TTS**: If text-to-speech isn't working:
-   - Check that your Murf API key is correctly set as `MURF_API_KEY` (not `MURF_AI_API_KEY`)
-   - The application will automatically fall back to browser TTS if Murf AI fails
-   - If you don't have a Murf API key, the system will use browser TTS
+### 🧠 AI Intelligence
+- AI responses powered by **OpenRouter / OpenAI**
+- Context-aware medical conversations
+- Session-based chat history
 
-4. **Authentication Issues**:
-   - Ensure your Clerk API keys are correctly set in the `.env.local` file
-   - Check that all the Clerk redirect URLs are properly configured
+### 🔊 Speech Systems
+- **Speech-to-Text** using AssemblyAI (WebSocket)
+- **Text-to-Speech** using Murf AI
+- Browser TTS fallback if Murf is unavailable
 
-5. **Database Errors**: If you see database connection errors:
-   - Make sure your PostgreSQL database is running
-   - Check that the `DATABASE_URL` in `.env.local` is correct
-   - If you don't need database functionality, the app will still work with limited features
+### 🌍 Multi-Language Support
+- Internationalization using Next.js routing
+- Supports multiple languages
+- Language routes like `/en`, `/hi`, etc.
 
-6. **Browser Compatibility**: 
-   - The voice features work best in Chrome and Edge
-   - Safari may have limited WebSocket support
-   - Make sure your browser supports the Web Audio API
+### 🔐 Authentication & Data
+- Secure authentication with **Clerk**
+- PostgreSQL database
+- Prisma ORM for database access
 
-7. **No Speech Detected**:
-   - Check if the microphone indicator turns green after the AI speaks
-   - Try speaking louder or moving closer to your microphone
-   - Check if your browser's console shows any WebSocket errors
+### ☁️ Deployment
+- Fully deployed on **Vercel**
+- Production-ready setup
 
-## License
+---
 
-[MIT](LICENSE)
+## 🎥 Demo Video
+
+▶️ **Watch Demo:**  
+https://imagekit.io/player/embed/rmyd10ywi/Recording%202025-06-29%20204016.mp4
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer | Technology |
+|------|-----------|
+| Frontend | Next.js (App Router), React |
+| Speech-to-Text | AssemblyAI (WebSocket) |
+| Text-to-Speech | Murf AI + Browser TTS |
+| AI Models | OpenRouter / OpenAI |
+| Authentication | Clerk |
+| Database | PostgreSQL |
+| ORM | Prisma |
+| Deployment | Vercel |
+
+---
+
+## ⚙️ Local Setup
+
+### 1️⃣ Clone Repository
+```bash
+git clone https://github.com/shreybadal-source/AI_DOCTOR.git
+cd AI_DOCTOR
+2️⃣ Install Dependencies
+bash
+Copy code
+npm install
+3️⃣ Environment Variables
+Create a .env.local file:
+
+env
+Copy code
+# Voice APIs
+NEXT_PUBLIC_ASSEMBLYAI_API_KEY=your_assemblyai_api_key
+MURF_API_KEY=your_murf_api_key
+
+# AI
+OPEN_ROUTER_API_KEY=your_openrouter_api_key
+
+# Clerk Authentication
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
+CLERK_SECRET_KEY=your_clerk_secret_key
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL=/dashboard
+NEXT_PUBLIC_CLERK_SIGN_UP_FALLBACK_REDIRECT_URL=/dashboard
+
+# Database
+DATABASE_URL="postgresql://postgres:password@localhost:5432/doctor_ai?schema=public"
+
+# App
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+4️⃣ Database Setup
+bash
+Copy code
+npx prisma migrate dev
+5️⃣ Run Development Server
+bash
+Copy code
+npm run dev
+App runs at:
+http://localhost:3000
+
+🔄 Voice Conversation Flow
+Start Call – User clicks Start Call
+
+AI Speaking – AI introduces itself (mic muted)
+
+User Speaking – Mic auto-activates
+
+Silence Detection – 2 seconds pause ends input
+
+Processing – Speech → Text → AI → Voice
+
+Repeat – Continues until call ends
+
+🌍 Deployed Version
+✅ Production URL:
+https://aidoctor-sable.vercel.app/en
+
+🧪 Troubleshooting
+🎤 Microphone
+Allow microphone permission in browser
+
+Best supported in Chrome / Edge
+
+🧠 AssemblyAI
+Ensure API key is correct
+
+Check account credits
+
+Must use NEXT_PUBLIC_ prefix
+
+🔊 Murf AI
+Use MURF_API_KEY (not MURF_AI_API_KEY)
+
+Browser TTS auto-fallback supported
+
+🔐 Clerk
+Verify all Clerk keys and redirect URLs
+
+Ensure dashboard routes exist
+
+🗄️ Database
+PostgreSQL must be running
+
+Check DATABASE_URL
+
+App works with limited features without DB
+
+📄 License
+MIT License
+
+markdown
+Copy code
+
+---
+
